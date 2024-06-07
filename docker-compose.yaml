@@ -1,0 +1,20 @@
+version: "2.1"
+services:
+  code-server:
+    image: linuxserver/code-server:4.16.1
+    container_name: code-server
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/La_Paz
+      - PASSWORD=password #por seguridad colocar un password
+      - HASHED_PASSWORD=password #opcional
+      - SUDO_PASSWORD=password #opcional
+      - SUDO_PASSWORD_HASH=password #opcional
+      - PROXY_DOMAIN=vscode.my.domain #opcional
+      - DEFAULT_WORKSPACE=/config/workspace #opcional
+    volumes:
+      - /path/to/appdata/config:/config #especificar directorio
+    ports:
+      - 8443:8443
+    restart: unless-stopped
